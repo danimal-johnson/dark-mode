@@ -3,8 +3,15 @@ import React, { useState } from 'react';
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
   const toggleMode = e => {
+    const element = document.getElementById("App");
     e.preventDefault();
     setDarkMode(!darkMode);
+    console.log(darkMode);
+    // if (darkMode) {
+      element.classList.toggle("dark-mode");
+    // } else {
+    //   element.classList.remove("dark-mode");
+    // }
   };
   return (
     <nav className="navbar">

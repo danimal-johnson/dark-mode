@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+// import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useDarkMode } from '../hooks/useDarkMode';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useLocalStorage('darkmode', false);
-  const toggleMode = e => {
-    const element = document.getElementById("App");
+  const [darkMode, setDarkMode] = useDarkMode(false);
+  const toggleMode = async e => {
     e.preventDefault();
-    setDarkMode(!darkMode);
-    console.log(darkMode);
-    // if (darkMode) {
-      element.classList.toggle("dark-mode");
-    // } else {
-    //   element.classList.remove("dark-mode");
-    // }
+    console.log("before", darkMode);
+    await setDarkMode(!darkMode);
+    console.log("after", darkMode);
   };
+
   return (
     <nav className="navbar">
       <h1>Crypto Tracker</h1>
